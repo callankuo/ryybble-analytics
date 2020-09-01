@@ -1,0 +1,19 @@
+{
+  "name": "rybble-dashboard",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "@cubejs-backend/postgres-driver": "^0.19.54",
+    "@cubejs-backend/server": "^0.19.55",
+    "jsonwebtoken": "^8.5.1",
+    "jwk-to-pem": "^2.0.4",
+    "lodash": "^4.17.19",
+    "pg": "^8.3.2",
+    "pg-format": "^1.0.4",
+    "read-excel-file": "^4.0.7",
+    "xlsx": "^0.16.6"
+  }
+}
