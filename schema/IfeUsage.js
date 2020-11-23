@@ -2,13 +2,13 @@ cube(`IfeUsage`, {
   sql: `SELECT * FROM public.ife_usage`,
   
   joins: {
-    Media: {
-      sql: `${CUBE}.media_id = ${Media}.id`,
+    PassengerManifest: {
+      sql: `${CUBE}.passenger_manifest_id = ${PassengerManifest}.id`,
       relationship: `belongsTo`
     },
     
-    Aircraft: {
-      sql: `${CUBE}.aircraft_id = ${Aircraft}.id`,
+    Media: {
+      sql: `${CUBE}.media_id = ${Media}.id`,
       relationship: `belongsTo`
     }
   },
@@ -18,16 +18,12 @@ cube(`IfeUsage`, {
       type: `count`,
       drillMembers: [id, createdAt]
     },
-    totalUsage: {
-      sql: `play_time`,
+    UH: {
+      sql: `"UH"`,
       type: `sum`
     },
-    uhUsage: {
-      sql: `uh`,
-      type: `sum`
-    },
-    pdUsage: {
-      sql: `pd`,
+    PD: {
+      sql: `"PD"`,
       type: `sum`
     }
   },
@@ -37,29 +33,6 @@ cube(`IfeUsage`, {
       sql: `id`,
       type: `number`,
       primaryKey: true
-    },
-    mediaId: {
-      sql: `media_id`,
-      type: `number`
-    },
-    aircraftId: {
-      sql: `aircraft_id`,
-      type: `number`
-    },
-    
-    seatClass: {
-      sql: `seat_class`,
-      type: `string`
-    },
-    
-    seatNumber: {
-      sql: `seat_number`,
-      type: `string`
-    },
-    
-    playerGerder: {
-      sql: `player_gerder`,
-      type: `string`
     },
     
     createdAt: {

@@ -11,19 +11,14 @@ cube(`Media`, {
   measures: {
     count: {
       type: `count`,
-      drillMembers: [id, mediaName, createdAt]
+      drillMembers: [mediaName, id, createdAt]
     }
   },
   
   dimensions: {
-    id: {
-      sql: `id`,
-      type: `number`,
-      primaryKey: true
-    },
-    supplierId: {
-      sql: `supplier_id`,
-      type: `number`
+    genres: {
+      sql: `genres`,
+      type: `string`
     },
     
     mediaName: {
@@ -31,13 +26,19 @@ cube(`Media`, {
       type: `string`
     },
     
-    mediaContentType: {
-      sql: `media_content_type`,
+    mediaFormat: {
+      sql: `media_format`,
       type: `string`
     },
     
-    mediaFormat: {
-      sql: `media_format`,
+    id: {
+      sql: `id`,
+      type: `number`,
+      primaryKey: true
+    },
+    
+    mediaContentType: {
+      sql: `media_content_type`,
       type: `string`
     },
     

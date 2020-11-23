@@ -8,24 +8,44 @@ cube(`Airline`, {
   measures: {
     count: {
       type: `count`,
-      drillMembers: [id, airlineName, headquarterCity, headerquarterCountry, createdAt]
+      drillMembers: [headerquarterCountry, id, headquarterCity, name, createdAt]
     },
     
-    airplaneQuantity: {
-      sql: `airplane_quantity`,
+    aircraftQuantity: {
+      sql: `aircraft_quantity`,
       type: `sum`
     }
   },
   
   dimensions: {
+    headerquarterCountry: {
+      sql: `headerquarter_country`,
+      type: `string`
+    },
+    
+    contactPerson: {
+      sql: `contact_person`,
+      type: `string`
+    },
+    
+    headerquarterState: {
+      sql: `headerquarter_state`,
+      type: `string`
+    },
+    
+    contactEmail: {
+      sql: `contact_email`,
+      type: `string`
+    },
+    
     id: {
       sql: `id`,
       type: `number`,
       primaryKey: true
     },
     
-    airlineName: {
-      sql: `airline_name`,
+    contactPhone: {
+      sql: `contact_phone`,
       type: `string`
     },
     
@@ -39,33 +59,13 @@ cube(`Airline`, {
       type: `string`
     },
     
-    headerquarterState: {
-      sql: `headerquarter_state`,
+    type: {
+      sql: `type`,
       type: `string`
     },
     
-    headerquarterCountry: {
-      sql: `headerquarter_country`,
-      type: `string`
-    },
-    
-    contactPerson: {
-      sql: `contact_person`,
-      type: `string`
-    },
-    
-    contactPhone: {
-      sql: `contact_phone`,
-      type: `string`
-    },
-    
-    contactEmail: {
-      sql: `contact_email`,
-      type: `string`
-    },
-    
-    carry: {
-      sql: `carry`,
+    name: {
+      sql: `name`,
       type: `string`
     },
     

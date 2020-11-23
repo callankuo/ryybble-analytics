@@ -13,24 +13,19 @@ cube(`Supplier`, {
   },
   
   dimensions: {
+    headQuarter: {
+      sql: `head_quarter`,
+      type: `string`
+    },
+    
     id: {
       sql: `id`,
       type: `number`,
       primaryKey: true
     },
     
-    supplierName: {
-      sql: `supplier_name`,
-      type: `string`
-    },
-    
     industry: {
       sql: `industry`,
-      type: `string`
-    },
-    
-    headQuarter: {
-      sql: `head_quarter`,
       type: `string`
     },
     
@@ -39,8 +34,8 @@ cube(`Supplier`, {
       type: `string`
     },
     
-    contactPhone: {
-      sql: `contact_phone`,
+    supplierName: {
+      sql: `supplier_name`,
       type: `string`
     },
     
@@ -51,6 +46,11 @@ cube(`Supplier`, {
     
     relationship: {
       sql: `relationship`,
+      type: `string`
+    },
+    
+    contactPhone: {
+      sql: `contact_phone`,
       type: `string`
     },
     
