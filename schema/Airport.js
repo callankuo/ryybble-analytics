@@ -47,4 +47,5 @@ cube(`Airport`, {
       type: `time`
     }
   }
+
 });

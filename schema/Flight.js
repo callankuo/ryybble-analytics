@@ -20,6 +20,10 @@ cube(`Flight`, {
     count: {
       type: `count`,
       drillMembers: [departDate, arrivalDate, id, createdAt]
+    },
+    flightTime: {
+      sql: `flight_time`,
+      type: `sum`
     }
   },
   
@@ -57,7 +61,8 @@ cube(`Flight`, {
     id: {
       sql: `id`,
       type: `number`,
-      primaryKey: true
+      primaryKey: true,
+      shown: true
     },
     
     origin: {

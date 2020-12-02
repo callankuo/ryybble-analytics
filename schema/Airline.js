@@ -79,4 +79,5 @@ cube(`Airline`, {
       type: `time`
     }
   }
+
 });

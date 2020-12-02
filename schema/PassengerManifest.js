@@ -80,4 +80,5 @@ cube(`PassengerManifest`, {
       type: `time`
     }
   }
+
 });
