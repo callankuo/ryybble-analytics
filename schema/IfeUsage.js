@@ -50,6 +50,20 @@ cube(`IfeUsage`, {
       type: `time`
     }
   },
+  segments: {
+    ifeVideoOnDemand: {
+      sql: `${Media}.ife_usage_type = 'Video on Demand'`
+    },
+    ifeAudioOnDemand: {
+      sql: `${Media}.ife_usage_type = 'Audio on Demand'`
+    },
+    ifeGame: {
+      sql: `${Media}.ife_usage_type = 'Game'`
+    },
+    ifeApplication: {
+      sql: `${Media}.ife_usage_type = 'Application'`
+    }
+  },
   preAggregations: {
     usageUHContentTypeByMonth: {
       type: `rollup`,
