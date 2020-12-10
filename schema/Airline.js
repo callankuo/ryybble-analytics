@@ -78,6 +78,20 @@ cube(`Airline`, {
       sql: `relationship_since`,
       type: `time`
     }
-  }
+  },
+  segments: {
+    americanAirlines: {
+      sql: `${CUBE}.name = 'American Airlines'`
+    },
+    southWestAirlines: {
+      sql: `${CUBE}.name = 'Southwest Airlines'`
+    },
+    airNewZealand: {
+      sql: `${CUBE}.name = 'Air New Zealand'`
+    },
+    emiratesAirline: {
+      sql: `${CUBE}.name = 'Emirates Airline'`
+    }
+  },
 
 });
