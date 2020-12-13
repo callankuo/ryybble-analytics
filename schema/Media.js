@@ -1,9 +1,13 @@
 cube(`Media`, {
   sql: `SELECT * FROM public.media`,
+
+  refreshKey: {
+    sql: `SELECT MAX(created_at) FROM public.media`
+  },
   
   joins: {
-    Supplier: {
-      sql: `${CUBE}.supplier_id = ${Supplier}.id`,
+    ContentProvider: {
+      sql: `${CUBE}.supplier_id = ${ContentProvider}.id`,
       relationship: `belongsTo`
     }
   },

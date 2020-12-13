@@ -1,5 +1,10 @@
 cube(`PassengerManifest`, {
   sql: `SELECT * FROM public.passenger_manifest`,
+
+  refreshKey: {
+    sql: `SELECT MAX(created_at) FROM public.passenger_manifest`
+  },
+  
   
   joins: {
     Flight: {

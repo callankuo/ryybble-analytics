@@ -1,15 +1,19 @@
 cube(`Flight`, {
   sql: `SELECT * FROM public.flight`,
+
+  refreshKey: {
+    sql: `SELECT MAX(created_at) FROM public.flight`
+  },
   
   joins: {
     Aircraft: {
       sql: `${CUBE}.tail = ${Aircraft}.tail`,
       relationship: `belongsTo`
     },
-    Airport: {
-      sql: `${CUBE}.origin = ${Airport}.code`,
-      relationship: `belongsTo`
-    },
+   // Airport: {
+      //sql: `${CUBE}.origin = ${Airport}.code`,
+      //relationship: `belongsTo`
+    //},
     Airport: {
       sql: `${CUBE}.destination = ${Airport}.code`,
       relationship: `belongsTo`

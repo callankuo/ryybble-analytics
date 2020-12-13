@@ -1,5 +1,9 @@
 cube(`Airline`, {
   sql: `SELECT * FROM public.airline`,
+
+  refreshKey: {
+    sql: `SELECT MAX(created_at) FROM public.airline`
+  },
   
   joins: {
     

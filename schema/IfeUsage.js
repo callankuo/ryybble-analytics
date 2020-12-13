@@ -1,5 +1,9 @@
 cube(`IfeUsage`, {
   sql: `SELECT * FROM public.ife_usage`,
+
+  refreshKey: {
+    sql: `SELECT MAX(created_at) FROM public.ife_usage`
+  },
   
   joins: {
     PassengerManifest: {
@@ -7,8 +11,8 @@ cube(`IfeUsage`, {
       relationship: `belongsTo`
     },
     
-    Media: {
-      sql: `${CUBE}.media_id = ${Media}.id`,
+    FlightMedia: {
+      sql: `${CUBE}.flight_media_id = ${FlightMedia}.id`,
       relationship: `belongsTo`
     }
   },
@@ -22,6 +26,7 @@ cube(`IfeUsage`, {
       sql: `"UH"`,
       type: `sum`,
       drillMembers: [id, Airline.name, Flight.tail, Flight.id, Flight.origin, Flight.destination, Airport.city, Flight.flightTime, Media.mediaName, Media.genres, uh, device, PassengerManifest.passengerName,PassengerManifest.gender,PassengerManifest.ageGroup,PassengerManifest.class, PassengerManifest.seatAssignment,PassengerManifest.nationality, PassengerManifest.tripPurpose]
+      //drillMembers: [id, Media.genres, uh, device, PassengerManifest.passengerName,PassengerManifest.gender,PassengerManifest.ageGroup,PassengerManifest.class, PassengerManifest.seatAssignment,PassengerManifest.nationality, PassengerManifest.tripPurpose]
     },
     PD: {
       sql: `"PD"`,
@@ -67,7 +72,7 @@ cube(`IfeUsage`, {
   preAggregations: {
     usageUHContentTypeByMonth: {
       type: `rollup`,
-      measureReferences: [UH,PD],
+      measureReferences: [UH,PD,count],
       dimensionReferences: [Media.ifeUsageType],
       timeDimensionReference: createdAt,
       granularity: `month`

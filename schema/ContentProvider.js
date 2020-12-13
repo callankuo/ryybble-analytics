@@ -1,5 +1,9 @@
-cube(`Supplier`, {
-  sql: `SELECT * FROM public.supplier`,
+cube(`ContentProvider`, {
+  sql: `SELECT * FROM public.content_provider`,
+
+  refreshKey: {
+    sql: `SELECT MAX(created_at) FROM public.content_provider`
+  },
   
   joins: {
     
