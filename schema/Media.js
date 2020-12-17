@@ -73,7 +73,7 @@ cube(`Media`, {
   segments: {
    
     contentTypeMovie: {
-      sql: `${Media}.content_type = 'movie'`
+      sql: `${Media}.content_type = 'Movie'`
     },
     contentTypeTvEpisode: {
       sql: `${Media}.content_type = 'TV Episode'`
