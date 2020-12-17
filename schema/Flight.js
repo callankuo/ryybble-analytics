@@ -21,10 +21,11 @@ cube(`Flight`, {
   },
   
   measures: {
+    /*
     count: {
       type: `count`,
       drillMembers: [departDate, arrivalDate, id, createdAt]
-    },
+    }, */
     flightTime: {
       sql: `flight_time`,
       type: `sum`
@@ -32,6 +33,7 @@ cube(`Flight`, {
   },
   
   dimensions: {
+    /* Hide for PoC
     departDate: {
       sql: `depart_date`,
       type: `string`
@@ -60,33 +62,37 @@ cube(`Flight`, {
     flightNo: {
       sql: `flight_no`,
       type: `string`
-    },
-    
+    }, 
+    */
     id: {
       sql: `id`,
       type: `number`,
       primaryKey: true,
-      shown: true
+      //shown: true
     },
     
     origin: {
       sql: `origin`,
       type: `string`
     },
-    
+    /*
     tail: {
       sql: `tail`,
       type: `string`
-    },
+    }, */
     
     destination: {
       sql: `destination`,
+      type: `string`
+    },
+    rout: {
+      sql: `rout`,
       type: `string`
     },
     
     createdAt: {
       sql: `created_at`,
       type: `time`
-    }
+    } 
   }
 });

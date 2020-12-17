@@ -13,11 +13,12 @@ cube(`Aircraft`, {
   },
   
   measures: {
+    /*
     count: {
       type: `count`,
       drillMembers: [id, createdAt]
-    },
-    
+    },*/
+    /*
     firstClass: {
       sql: `first_class`,
       type: `sum`
@@ -36,24 +37,33 @@ cube(`Aircraft`, {
     economyClass: {
       sql: `economy_class`,
       type: `sum`
-    }
+    } */
   },
   
   dimensions: {
-    ifeType: {
-      sql: `ife_type`,
-      type: `string`
-    },
     
+    /*
     tail: {
       sql: `tail`,
       type: `string`
-    },
+    }, */
     
     id: {
       sql: `id`,
       type: `number`,
       primaryKey: true
+    },
+/*
+    createdAt: {
+      sql: `created_at`,
+      type: `time`
+    }, */
+
+    /*
+
+    ifeType: {
+      sql: `ife_type`,
+      type: `string`
     },
     
     aircraftType: {
@@ -61,14 +71,10 @@ cube(`Aircraft`, {
       type: `string`
     },
     
-    createdAt: {
-      sql: `created_at`,
-      type: `time`
-    },
-    
     serviceSince: {
       sql: `service_since`,
       type: `time`
     }
+    */
   }
 });

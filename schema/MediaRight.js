@@ -1,13 +1,13 @@
-cube(`FlightMedia`, {
-  sql: `SELECT * FROM public.flight_media`,
+cube(`MediaRight`, {
+  sql: `SELECT * FROM public.media_right`,
 
   refreshKey: {
-    sql: `SELECT MAX(created_at) FROM public.flight_media`
+    sql: `SELECT MAX(created_at) FROM public.media_right`
   },
   
   joins: {
-    Flight: {
-      sql: `${CUBE}.flight_id = ${Flight}.id`,
+    Airline: {
+      sql: `${CUBE}.airline_id = ${Airline}.id`,
       relationship: `belongsTo`
     },
     Media: {
@@ -17,10 +17,12 @@ cube(`FlightMedia`, {
   },
   
   measures: {
+    /*
     count: {
       type: `count`,
-      drillMembers: [ id, createdAt]
-    },
+      drillMembers: [ id]
+    }, */
+    
   },
   
   dimensions: {
@@ -29,10 +31,10 @@ cube(`FlightMedia`, {
       type: `number`,
       primaryKey: true
     },
-    
+    /*
     createdAt: {
       sql: `created_at`,
       type: `time`
-    }
+    } */
   }
 });

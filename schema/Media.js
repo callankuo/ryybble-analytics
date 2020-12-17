@@ -6,17 +6,18 @@ cube(`Media`, {
   },
   
   joins: {
-    ContentProvider: {
-      sql: `${CUBE}.supplier_id = ${ContentProvider}.id`,
+    Studio: {
+      sql: `${CUBE}.studio_id = ${Studio}.id`,
       relationship: `belongsTo`
     }
   },
   
   measures: {
+    /*
     count: {
       type: `count`,
-      drillMembers: [mediaName, id, createdAt]
-    }
+      drillMembers: [title, id, createdAt]
+    } */
   },
   
   dimensions: {
@@ -25,14 +26,22 @@ cube(`Media`, {
       type: `string`
     },
     
-    mediaName: {
-      sql: `media_name`,
+    title: {
+      sql: `title`,
       type: `string`
     },
     
-    mediaFormat: {
-      sql: `media_format`,
+    fileType: {
+      sql: `file_type`,
       type: `string`
+    },
+    fileSize: {
+      sql: `file_size`,
+      type: `string`
+    },
+    runTime: {
+      sql: `run_time`,
+      type: `number`
     },
     
     id: {
@@ -41,24 +50,35 @@ cube(`Media`, {
       primaryKey: true
     },
     
-    mediaContentType: {
-      sql: `media_content_type`,
+    contentType: {
+      sql: `content_type`,
       type: `string`
     },
     
-    ifeUsageType: {
-      sql: `ife_usage_type`,
+    usageType: {
+      sql: `usage_type`,
       type: `string`
     },
-    
+    /*
     createdAt: {
       sql: `created_at`,
       type: `time`
-    },
-    
+    }, */
+    /*
     publishSince: {
       sql: `publish_since`,
       type: `time`
+    } */
+  },
+  segments: {
+   
+    contentTypeMovie: {
+      sql: `${Media}.content_type = 'movie'`
+    },
+    contentTypeTvEpisode: {
+      sql: `${Media}.content_type = 'TV Episode'`
     }
-  }
+    
+    } 
+  
 });

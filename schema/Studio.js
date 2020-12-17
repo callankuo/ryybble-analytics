@@ -1,8 +1,8 @@
-cube(`ContentProvider`, {
-  sql: `SELECT * FROM public.content_provider`,
+cube(`Studio`, {
+  sql: `SELECT * FROM public.studio`,
 
   refreshKey: {
-    sql: `SELECT MAX(created_at) FROM public.content_provider`
+    sql: `SELECT MAX(created_at) FROM public.studio`
   },
   
   joins: {
@@ -10,15 +10,17 @@ cube(`ContentProvider`, {
   },
   
   measures: {
+    /*
     count: {
       type: `count`,
       drillMembers: [id, supplierName, createdAt]
-    }
+    } */
   },
   
   dimensions: {
-    headQuarter: {
-      sql: `head_quarter`,
+  
+    name: {
+      sql: `name`,
       type: `string`
     },
     
@@ -27,21 +29,27 @@ cube(`ContentProvider`, {
       type: `number`,
       primaryKey: true
     },
-    
+    /*
+    createdAt: {
+      sql: `created_at`,
+      type: `time`
+    } */
+    /*
     industry: {
       sql: `industry`,
+      type: `string`
+    },
+    headQuarter: {
+      sql: `head_quarter`,
       type: `string`
     },
     
     contactPerson: {
       sql: `contact_person`,
       type: `string`
-    },
+    }, 
     
-    supplierName: {
-      sql: `supplier_name`,
-      type: `string`
-    },
+    
     
     contactEmail: {
       sql: `contact_email`,
@@ -58,14 +66,11 @@ cube(`ContentProvider`, {
       type: `string`
     },
     
-    createdAt: {
-      sql: `created_at`,
-      type: `time`
-    },
     
     relationshioSince: {
       sql: `relationshio_since`,
       type: `time`
     }
+    */
   }
 });

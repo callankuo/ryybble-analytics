@@ -14,13 +14,27 @@ cube(`PassengerManifest`, {
   },
   
   measures: {
+    /*
     count: {
       type: `count`,
-      drillMembers: [passengerName, id, createdAt]
-    }
+      drillMembers: [id, createdAt]
+    } */
   },
   
   dimensions: {
+    id: {
+      sql: `id`,
+      type: `number`,
+      primaryKey: true
+    },
+    /*
+    createdAt: {
+      sql: `created_at`,
+      type: `time`
+    }, */
+
+    /*
+
     passengerName: {
       sql: `passenger_name`,
       type: `string`
@@ -42,12 +56,6 @@ cube(`PassengerManifest`, {
     ageGroup: {
       sql: `age_group`,
       type: `string`
-    },
-    
-    id: {
-      sql: `id`,
-      type: `number`,
-      primaryKey: true
     },
     
     seatAssignment: {
@@ -78,12 +86,8 @@ cube(`PassengerManifest`, {
     class: {
       sql: `class`,
       type: `string`
-    },
-    
-    createdAt: {
-      sql: `created_at`,
-      type: `time`
     }
+    */
   }
 
 });

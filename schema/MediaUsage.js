@@ -1,8 +1,8 @@
-cube(`IfeUsage`, {
-  sql: `SELECT * FROM public.ife_usage`,
+cube(`MediaUsage`, {
+  sql: `SELECT * FROM public.media_usage`,
 
   refreshKey: {
-    sql: `SELECT MAX(created_at) FROM public.ife_usage`
+    sql: `SELECT MAX(created_at) FROM public.media_usage`
   },
   
   joins: {
@@ -11,8 +11,8 @@ cube(`IfeUsage`, {
       relationship: `belongsTo`
     },
     
-    FlightMedia: {
-      sql: `${CUBE}.flight_media_id = ${FlightMedia}.id`,
+    MediaRight: {
+      sql: `${CUBE}.media_right_id = ${MediaRight}.id`,
       relationship: `belongsTo`
     }
   },
@@ -20,8 +20,8 @@ cube(`IfeUsage`, {
   measures: {
     count: {
       type: `count`,
-      drillMembers: [id, createdAt]
-    },
+      //drillMembers: [id, Airline.name, Flight.tail, Flight.id, Flight.origin, Flight.destination, Airport.city, Flight.flightTime, Media.title, Media.genres, uh, device, PassengerManifest.passengerName,PassengerManifest.gender,PassengerManifest.ageGroup,PassengerManifest.class, PassengerManifest.seatAssignment,PassengerManifest.nationality, PassengerManifest.tripPurpose]
+    }, /* hide for Poc
     UH: {
       sql: `"UH"`,
       type: `sum`,
@@ -31,7 +31,7 @@ cube(`IfeUsage`, {
     PD: {
       sql: `"PD"`,
       type: `sum`
-    }
+    } */
   },
   
   dimensions: {
@@ -39,12 +39,13 @@ cube(`IfeUsage`, {
       sql: `id`,
       type: `number`,
       primaryKey: true,
-      shown: true
-    },
+      //shown: true
+    }, 
+    /*
     uh: {
       sql: `"UH"`,
       type: `number`,
-    },
+    }, */
     device: {
       sql: `device`,
       type: `string`
@@ -56,26 +57,27 @@ cube(`IfeUsage`, {
     }
   },
   segments: {
+    /* hide for PoC
     ifeVideoOnDemand: {
-      sql: `${Media}.ife_usage_type = 'Video on Demand'`
+      sql: `${Media}.usage_type = 'Video on Demand'`
     },
     ifeAudioOnDemand: {
-      sql: `${Media}.ife_usage_type = 'Audio on Demand'`
+      sql: `${Media}.usage_type = 'Audio on Demand'`
     },
     ifeGame: {
-      sql: `${Media}.ife_usage_type = 'Game'`
+      sql: `${Media}.usage_type = 'Game'`
     },
     ifeApplication: {
-      sql: `${Media}.ife_usage_type = 'Application'`
-    }
+      sql: `${Media}.usage_type = 'Application'`
+    } */
   },
   preAggregations: {
     usageUHContentTypeByMonth: {
       type: `rollup`,
-      measureReferences: [UH,PD,count],
-      dimensionReferences: [Media.ifeUsageType],
+      measureReferences: [count],
+      dimensionReferences: [Media.contentType],
       timeDimensionReference: createdAt,
-      granularity: `month`
+      granularity: `year`
     }
   }
 });

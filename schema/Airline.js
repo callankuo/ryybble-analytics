@@ -10,18 +10,37 @@ cube(`Airline`, {
   },
   
   measures: {
+    /*
     count: {
       type: `count`,
       drillMembers: [headerquarterCountry, id, headquarterCity, name, createdAt]
-    },
+    }, */
     
-    aircraftQuantity: {
-      sql: `aircraft_quantity`,
+    fleetSize: {
+      sql: `fleet_size`,
       type: `sum`
     }
   },
   
   dimensions: {
+    
+    
+    id: {
+      sql: `id`,
+      type: `number`,
+      primaryKey: true
+    },
+
+    name: {
+      sql: `name`,
+      type: `string`
+    },
+/*
+    createdAt: {
+      sql: `created_at`,
+      type: `time`
+    }, */
+/*
     headerquarterCountry: {
       sql: `headerquarter_country`,
       type: `string`
@@ -40,12 +59,6 @@ cube(`Airline`, {
     contactEmail: {
       sql: `contact_email`,
       type: `string`
-    },
-    
-    id: {
-      sql: `id`,
-      type: `number`,
-      primaryKey: true
     },
     
     contactPhone: {
@@ -68,20 +81,11 @@ cube(`Airline`, {
       type: `string`
     },
     
-    name: {
-      sql: `name`,
-      type: `string`
-    },
-    
-    createdAt: {
-      sql: `created_at`,
-      type: `time`
-    },
-    
     relationshipSince: {
       sql: `relationship_since`,
       type: `time`
-    }
+    } 
+    */
   },
   segments: {
     americanAirlines: {
