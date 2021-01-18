@@ -21,10 +21,11 @@ cube(`Media`, {
   },
   
   dimensions: {
+    /*
     genres: {
       sql: `genres`,
       type: `string`
-    },
+    }, */
     
     title: {
       sql: `title`,

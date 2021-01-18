@@ -20,6 +20,8 @@ cube(`MediaUsage`, {
   measures: {
     count: {
       type: `count`,
+      drillMembers: [count, Media.contentType, Media.title, Media.fileType, Media.fileSize, Media.runTime]
+      //drillMembers: [id, Media.genres, uh, device, PassengerManifest.passengerName,PassengerManifest.gender,PassengerManifest.ageGroup,PassengerManifest.class, PassengerManifest.seatAssignment,PassengerManifest.nationality, PassengerManifest.tripPurpose]
       //drillMembers: [id, Airline.name, Flight.tail, Flight.id, Flight.origin, Flight.destination, Airport.city, Flight.flightTime, Media.title, Media.genres, uh, device, PassengerManifest.passengerName,PassengerManifest.gender,PassengerManifest.ageGroup,PassengerManifest.class, PassengerManifest.seatAssignment,PassengerManifest.nationality, PassengerManifest.tripPurpose]
     }, /* hide for Poc
     UH: {
