@@ -74,12 +74,61 @@ cube(`MediaUsage`, {
     } */
   },
   preAggregations: {
-    usageUHContentTypeByMonth: {
+    byAirline: {
+      type: `rollup`,
+      measureReferences: [count],
+      dimensionReferences: [Airline.name],
+      timeDimensionReference: createdAt,
+      granularity: `day`,
+      partitionGranularity: `month`
+    },
+    byStudio: {
+      type: `rollup`,
+      measureReferences: [count],
+      dimensionReferences: [Studio.name],
+      timeDimensionReference: createdAt,
+      granularity: `day`,
+      partitionGranularity: `month`
+    },
+    byDestination: {
+      type: `rollup`,
+      measureReferences: [count],
+      dimensionReferences: [Flight.destination],
+      timeDimensionReference: createdAt,
+      granularity: `day`,
+      partitionGranularity: `month`
+    },
+    byRoute: {
+      type: `rollup`,
+      measureReferences: [count],
+      dimensionReferences: [Flight.rout],
+      timeDimensionReference: createdAt,
+      granularity: `day`,
+      partitionGranularity: `month`
+    },
+    byDevice: {
+      type: `rollup`,
+      measureReferences: [count],
+      dimensionReferences: [device],
+      timeDimensionReference: createdAt,
+      granularity: `day`,
+      partitionGranularity: `month`
+    },
+    byContentType: {
       type: `rollup`,
       measureReferences: [count],
       dimensionReferences: [Media.contentType],
       timeDimensionReference: createdAt,
-      granularity: `year`
+      granularity: `day`,
+      partitionGranularity: `month`
+    },
+    byTitle: {
+      type: `rollup`,
+      measureReferences: [count],
+      dimensionReferences: [Media.contentType,Media.title,Media.fileType,Media.fileSize,Media.runTime],
+      timeDimensionReference: createdAt,
+      granularity: `day`,
+      partitionGranularity: `month`
     }
   }
 });
