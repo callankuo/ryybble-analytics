@@ -24,7 +24,7 @@ cube(`Region`, {
       type: `number`,
       primaryKey: true
     }, 
-    /*
+    
     name: {
       sql: `name`,
       type: `string`
@@ -34,7 +34,7 @@ cube(`Region`, {
       sql: `code`,
       type: `string`
     },
-   
+   /*
     createdAt: {
       sql: `created_at`,
       type: `time`

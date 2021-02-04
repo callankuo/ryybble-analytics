@@ -25,12 +25,12 @@ cube(`Airport`, {
       sql: `id`,
       type: `number`,
       primaryKey: true
-    }, /*
+    }, 
     city: {
       sql: `city`,
       type: `string`
-    }, */
-    /*
+    }, 
+    
     country: {
       sql: `country`,
       type: `string`
@@ -47,7 +47,7 @@ cube(`Airport`, {
       sql: `code`,
       type: `string`
     },
-    
+    /*
     createdAt: {
       sql: `created_at`,
       type: `time`
